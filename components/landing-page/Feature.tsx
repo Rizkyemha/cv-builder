@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
 export const Features = () => {
   return (
     <section
-      className="flex w-svw items-center justify-center bg-muted"
+      className="flex w-full items-center justify-center bg-muted"
       data-slot="cv-builder-section-features"
     >
       <div className="w-full max-w-5xl px-4 py-20 xl:px-10">

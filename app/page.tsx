@@ -7,17 +7,19 @@ import { StaggerWrapperAnimation } from "@/components/animations/Stagger"
 
 export default function Page() {
   return (
-    <div>
+    <div className="relative">
       <Header />
-      <StaggerWrapperAnimation>
-        <Problem />
-      </StaggerWrapperAnimation>
-      <StaggerWrapperAnimation>
-        <Features />
-      </StaggerWrapperAnimation>
-      <StaggerWrapperAnimation>
-        <Cta />
-      </StaggerWrapperAnimation>
+      <main className="w-full">
+        <StaggerWrapperAnimation>
+          <Problem />
+        </StaggerWrapperAnimation>
+        <StaggerWrapperAnimation>
+          <Features />
+        </StaggerWrapperAnimation>
+        <StaggerWrapperAnimation>
+          <Cta />
+        </StaggerWrapperAnimation>
+      </main>
       <Footer />
     </div>
   )

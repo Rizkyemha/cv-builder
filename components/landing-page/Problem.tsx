@@ -5,9 +5,9 @@ export const Problem = () => {
   return (
     <section
       data-slot="cv-builder-section-problem"
-      className="flex h-svh w-svw items-center justify-center"
+      className="flex min-h-[calc(100svh-60px)] w-full items-center justify-center"
     >
-      <div className="w-full max-w-5xl px-4 py-20 xl:px-10">
+      <div className="max-w-5xl px-4 py-20 xl:px-10">
         <p
           data-animation="fade"
           className="mb-6 text-right text-5xl tracking-widest uppercase"

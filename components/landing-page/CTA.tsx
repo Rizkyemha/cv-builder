@@ -3,8 +3,8 @@ import Image from "next/image"
 
 export const Cta = () => {
   return (
-    <section className="flex w-svw items-center justify-center">
-      <div className="relative flex w-full max-w-5xl flex-col gap-4 overflow-hidden px-4 py-20 sm:flex-row sm:gap-0 xl:px-10">
+    <section className="flex w-full items-center justify-center">
+      <div className="relative flex w-full max-w-5xl flex-col gap-4 px-4 py-20 sm:flex-row sm:gap-0 xl:px-10">
         {/* CONTENT */}
         <div className="relative z-20">
           <h2
@@ -24,7 +24,10 @@ export const Cta = () => {
             data-animation="slide-left"
             className="flex w-fit flex-wrap gap-4"
           >
-            <ButtonAnchor size="lg" href="https://github.com/Rizkyemha/cv-builder">
+            <ButtonAnchor
+              size="lg"
+              href="https://github.com/Rizkyemha/cv-builder"
+            >
               Github
             </ButtonAnchor>
           </div>
