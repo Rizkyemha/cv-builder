@@ -1,5 +1,6 @@
 "use client"
 
+import { cn } from "@/lib/utils"
 import { useBuilderStore } from "@/store/useBuilderStore"
 
 interface SectionInspectorProps {
@@ -25,7 +26,13 @@ export function SectionInspector({
           ? "focused"
           : "blurred"
       }
-      className="relative w-full cursor-pointer rounded ring-0 ring-offset-2 transition-all duration-200 data-[state=focused]:ring-2 data-[state=focused]:ring-blue-500"
+      className={cn(
+        "relative w-full cursor-pointer rounded ring-0 transition-all duration-200 data-[state=focused]:ring-2 data-[state=focused]:ring-blue-500",
+        isEditorMode &&
+          inspectorOn &&
+          selectedSectionIdx === idx &&
+          "ring-offset-2"
+      )}
       onClick={(e) => {
         e.preventDefault()
         if (!inspectorOn) return
