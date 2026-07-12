@@ -24,7 +24,7 @@ export const Cta = () => {
             data-animation="slide-left"
             className="flex w-fit flex-wrap gap-4"
           >
-            <ButtonAnchor size="lg" href="/">
+            <ButtonAnchor size="lg" href="https://github.com/Rizkyemha/cv-builder">
               Github
             </ButtonAnchor>
           </div>

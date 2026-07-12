@@ -10,7 +10,7 @@ export const Header = () => {
           </Link>
           <nav className="flex gap-8">
             <Link href="/builder">Builder</Link>
-            <Link href="/docs">Docs</Link>
+            <Link href="https://github.com/Rizkyemha/cv-builder/tree/master/docs">Docs</Link>
           </nav>
         </div>
       </div>
