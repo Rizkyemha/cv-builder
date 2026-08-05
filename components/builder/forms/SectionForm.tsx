@@ -5,8 +5,29 @@ import { useBuilderStore } from "@/store/useBuilderStore"
 import { useCurrentTemplate } from "@/hooks/useCurrentTemplate"
 import { DynamicForm } from "@/components/builder/forms/DynamicForm"
 import { Button } from "@/components/ui/button"
+import { Drawer } from "@/components/builder/forms/DrawerForm"
+import { useLayoutStore } from "@/store/useLayoutStore"
 
 export function SectionForm() {
+  const isDesktop = useLayoutStore((s) => s.isDesktop)
+
+  return isDesktop ? <SectionFormDesktop /> : <SectionFormMobile />
+}
+
+export function SectionFormDesktop() {
+  return <SectionFormMenu />
+}
+
+export function SectionFormMobile() {
+  return (
+    <Drawer>
+      <SectionFormMenu />
+    </Drawer>
+  )
+}
+
+export function SectionFormMenu() {
+  const isDesktop = useLayoutStore((s) => s.isDesktop)
   const formOpen = useBuilderStore((s) => s.formOpen)
   const selectedSectionIdx = useBuilderStore((s) => s.selectedSectionIdx)
   const selectedBlockId = useBuilderStore((s) => s.selectedBlockId)
@@ -35,26 +56,28 @@ export function SectionForm() {
   const title = isBlockMode ? `${sectionDef.label} — item` : `${section.label}`
 
   return (
-    <div className="flex h-full w-70 shrink-0 flex-col border-l border-border bg-card">
+    <div className="flex h-full shrink-0 flex-col bg-card lg:w-70 lg:border-l lg:border-border">
       {/* Header */}
-      <div className="flex shrink-0 items-center gap-2 border-b border-border px-3 py-2">
-        {isBlockMode ? (
-          <Box size={13} className="shrink-0 text-muted-foreground" />
-        ) : (
-          <Layers size={13} className="shrink-0 text-muted-foreground" />
-        )}
-        <span className="flex-1 truncate text-sm font-medium text-foreground">
-          {title}
-        </span>
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={closeForm}
-          aria-label="Close"
-        >
-          <X size={14} />
-        </Button>
-      </div>
+      {isDesktop && (
+        <div className="flex shrink-0 items-center gap-2 border-b border-border px-3 py-2">
+          {isBlockMode ? (
+            <Box size={13} className="shrink-0 text-muted-foreground" />
+          ) : (
+            <Layers size={13} className="shrink-0 text-muted-foreground" />
+          )}
+          <span className="flex-1 truncate text-sm font-medium text-foreground">
+            {title}
+          </span>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={closeForm}
+            aria-label="Close"
+          >
+            <X size={14} />
+          </Button>
+        </div>
+      )}
 
       {/* Tab strip — switch between section & block settings */}
       {sectionDef.hasBlock && (
@@ -98,7 +121,6 @@ export function SectionForm() {
           </button>
         </div>
       )}
-
       {/* Form body */}
       <div className="flex flex-1 flex-col overflow-hidden">
         <DynamicForm
