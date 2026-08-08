@@ -26,8 +26,10 @@ export function Drawer({ children }: { children: React.ReactNode }) {
       >
         <DrawerContent className="data-[vaul-drawer-direction=bottom]:max-h-[50vh] data-[vaul-drawer-direction=top]:max-h-[50vh]">
           <DrawerHeader>
-            <DrawerTitle>Move Goal</DrawerTitle>
-            <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+            <DrawerTitle>Manage Sections</DrawerTitle>
+            <DrawerDescription>
+              Organize and manage your resume sections
+            </DrawerDescription>
           </DrawerHeader>
           <div className="no-scrollbar overflow-y-auto px-4">{children}</div>
         </DrawerContent>
