@@ -11,6 +11,7 @@ import {
   Plus,
   ChevronDown,
   ChevronRight,
+  PanelBottomOpen,
 } from "lucide-react"
 import { useState } from "react"
 import { useBuilderStore } from "@/store/useBuilderStore"
@@ -19,6 +20,8 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { Section } from "@/types"
 import { Tooltip } from "@/components/primitive/Tooltip"
+import { useLayoutStore } from "@/store/useLayoutStore"
+import { Drawer } from "@/components/builder/toolbar/DrawerToolbar"
 
 // ─── Block list inside a section ─────────────────────────────────────────────
 
@@ -64,7 +67,7 @@ function BlockList({
             className={cn(
               "group flex cursor-pointer items-center gap-1 rounded-md border border-transparent px-2 py-1 text-xs transition-colors",
               isSelected
-                ? "border-blue-200 bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
+                ? "border-primary/20 bg-primary/30 text-primary-foreground dark:text-primary"
                 : "text-muted-foreground hover:bg-accent"
             )}
             onClick={() => {
@@ -174,6 +177,23 @@ function AddSectionMenu({ onClose }: { onClose: () => void }) {
 // ─── Main SectionToolbar ──────────────────────────────────────────────────────
 
 export function SectionToolbar() {
+  const isDesktop = useLayoutStore((s) => s.isDesktop)
+  return isDesktop ? <SectionToolbarDesktop /> : <SectionToolbarMobile />
+}
+
+export const SectionToolbarDesktop = () => {
+  return <SectionToolbarMenu />
+}
+
+export const SectionToolbarMobile = () => {
+  return (
+    <Drawer>
+      <SectionToolbarMenu />
+    </Drawer>
+  )
+}
+
+export const SectionToolbarMenu = () => {
   const sections = useBuilderStore((s) => s.sections)
   const selectedSectionIdx = useBuilderStore((s) => s.selectedSectionIdx)
   const selectSection = useBuilderStore((s) => s.selectSection)
@@ -196,7 +216,7 @@ export function SectionToolbar() {
   }
 
   return (
-    <div className="relative flex h-full w-70 shrink-0 flex-col border-r border-border bg-card">
+    <div className="relative flex h-full w-full shrink-0 flex-col bg-card lg:w-70 lg:border-r lg:border-border">
       {/* Header */}
       <div className="flex shrink-0 items-center justify-between border-b border-border px-2.5 py-2">
         <span className="text-[12px] font-semibold tracking-wide text-muted-foreground uppercase">
@@ -229,7 +249,7 @@ export function SectionToolbar() {
                 className={cn(
                   "group mx-1 flex cursor-pointer items-center gap-1.5 rounded-md border border-transparent px-2 py-1.5 text-[13px] transition-colors",
                   selected
-                    ? "border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-800 dark:bg-blue-950 dark:text-blue-300"
+                    ? "border-primary/20 bg-primary/30 text-primary-foreground dark:text-primary"
                     : "text-foreground hover:bg-accent",
                   !section.visible && "opacity-50"
                 )}
