@@ -92,7 +92,7 @@ export function SectionFormMenu() {
             }}
             className={`flex-1 border-b-2 py-1.5 text-[11px] font-medium transition-colors ${
               !isBlockMode
-                ? "border-blue-500 text-blue-600"
+                ? "border-primary text-primary-foreground dark:text-primary"
                 : "border-transparent text-muted-foreground hover:text-foreground"
             }`}
           >
@@ -110,7 +110,7 @@ export function SectionFormMenu() {
             disabled={section.blocks.length === 0}
             className={`flex-1 border-b-2 py-1.5 text-[11px] font-medium transition-colors disabled:opacity-30 ${
               isBlockMode
-                ? "border-blue-500 text-blue-600"
+                ? "border-primary text-primary-foreground dark:text-primary"
                 : "border-transparent text-muted-foreground hover:text-foreground"
             }`}
           >

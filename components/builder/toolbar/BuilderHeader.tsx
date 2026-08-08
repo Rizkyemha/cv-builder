@@ -59,7 +59,7 @@ export function BuilderHeader() {
 
   return (
     <header className="flex h-11 shrink-0 items-center gap-2 border-b border-border bg-card px-3">
-      <span className="text-sm font-semibold text-foreground text-primary">
+      <span className="text-sm font-semibold text-primary-foreground dark:text-primary">
         CV Builder
       </span>
 

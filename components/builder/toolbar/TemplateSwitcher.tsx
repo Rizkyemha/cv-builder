@@ -50,7 +50,7 @@ export function TemplateSwitcher() {
             className={cn(
               "flex w-full items-center justify-between px-3 py-2 text-left text-xs transition-colors",
               t.id === templateId
-                ? "bg-primary/50 text-primary-foreground"
+                ? "bg-primary/30 text-primary-foreground dark:text-primary"
                 : "text-foreground hover:bg-accent"
             )}
           >
